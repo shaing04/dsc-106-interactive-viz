@@ -109,6 +109,16 @@ h1 {
     gap: .6rem .8rem;
 }
 
+.controls {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .8rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, .06);
+    box-shadow: var(--shadow);
+}
+
 .panels {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -133,7 +143,7 @@ h1 {
     justify-content: space-between;
     padding: .9rem 1rem;
     font-weight: 600;
-    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    border-bottom: 1px solid rgb(244, 244, 244);
     color: var(--muted);
 }
 
@@ -158,6 +168,14 @@ footer {
     font-size: .85rem;
     text-align: center;
     opacity: .8;
+}
+
+footer a:link {
+    color: var(--muted);
+}
+
+footer a:hover {
+    color: var(--text);
 }
 
 @media (max-width: 900px) {
