@@ -84,7 +84,7 @@ function drawBarChart(container, data, color) {
 
   const yScale = d3
     .scaleLinear()
-    .domain([0, d3.max(data, (d) => d.value)])
+    .domain([0, 11]) // Check all of the years to make sure that data is within bounds
     .nice()
     .range([innerH, 0]);
 
@@ -99,7 +99,7 @@ function drawBarChart(container, data, color) {
   gridLines.select('.domain').remove();
 
   // Draw the Axes
-  const xAxis = d3.axisBottom(xScale);
+  const xAxis = d3.axisBottom(xScale).tickValues(xScale.domain());
   const yAxis = d3.axisLeft(yScale).ticks(5);
 
   const axisColor = '#1d1f37';
@@ -133,8 +133,29 @@ function drawBarChart(container, data, color) {
     .attr('y', (d) => yScale(d.value))
     .attr('width', xScale.bandwidth())
     .attr('height', (d) => innerH - yScale(d.value))
-    // .attr("rx", 4)
     .attr('fill', color);
+
+  // Add Y-axis label
+  svg.append('text')
+    .attr("class", "y label")
+    .attr("text-anchor", "middle")
+    .attr("x", -(height / 2))                // center vertically
+    .attr("y", margin.left / 3)              // offset slightly from left edge
+    .attr("transform", "rotate(-90)")        // rotate for vertical text
+    .style("font-size", "12px")
+    .style("fill", "#444")
+    .text("Avg Precipitation (mm/day)");
+
+  // Add X-axis Label
+  svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "middle")
+    .attr("x", width / 2)                    // center horizontally
+    .attr("y", height - margin.bottom / 30)   // below x-axis
+    .style("font-size", "12px")
+    .style("fill", "#444")
+    .text("Month");
+
 }
 
 draw();
