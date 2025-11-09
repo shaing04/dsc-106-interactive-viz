@@ -33,8 +33,8 @@ const rows = allData.flatMap((d) =>
 );
 
 //Split data for the models
-const dataA = rows.filter((d) => d.model == 'SSP2.45');
-const dataB = rows.filter((d) => d.model == 'SSP1.26');
+const dataA = rows.filter((d) => d.model == 'ssp2-45');
+const dataB = rows.filter((d) => d.model == 'ssp1-26');
 
 const left = d3.select('#chartLeft');
 const right = d3.select('#chartRight');
