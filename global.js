@@ -67,13 +67,9 @@ function currentYear() {
   return years[Math.max(0, Math.min(idx, years.length - 1))];
 }
 
-
-
 //tooltip feature
 const tooltip = d3.select('body')
   .append('div').attr('id', 'tooltip');
-
-
 
 // draw chart at current year
 function draw() {
@@ -137,10 +133,10 @@ function drawBarChart(container, data, color, year) {
   // gridlines
   const grid = g.append('g')
     .attr('class', 'gridlines')
-    .attr('transform', `translate(${margin.right}, 0)`)
+    .attr('transform', `translate(${margin}, 0)`)
     .call(d3.axisLeft(y).tickFormat('').tickSize(-innerW).ticks(5));
-  grid.select('.domain').remove();
-  grid.selectAll('line').attr('stroke', 'rgba(0, 0, 0, 0.15)');
+  
+    grid.select('.domain').remove();
 
   // axes
   const axisColor = '#1d1f37';
@@ -150,12 +146,15 @@ function drawBarChart(container, data, color, year) {
     .selectAll('text')
     .attr('fill', axisColor)
     .style('font-size', '12px');
+ 
   g.append('g')
     .call(d3.axisLeft(y).ticks(5))
     .selectAll('text')
     .attr('fill', axisColor)
     .style('font-size', '12px');
+  
   g.selectAll('.domain, .tick line').attr('stroke', 'rgba(0, 0, 0, 0.7)');
+  grid.selectAll('line').attr('stroke', 'rgba(0, 0, 0, 0.15)');
 
   // bars
   g.selectAll('rect.bar')
