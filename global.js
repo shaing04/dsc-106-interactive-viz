@@ -67,6 +67,14 @@ function currentYear() {
   return years[Math.max(0, Math.min(idx, years.length - 1))];
 }
 
+
+
+//tooltip feature
+const tooltip = d3.select('body')
+  .append('div').attr('id', 'tooltip');
+
+
+
 // draw chart at current year
 function draw() {
   const year = currentYear();
@@ -82,8 +90,8 @@ function draw() {
   if (!headerLeft.empty())  headerLeft.text(`Model SSP2.45 — ${year}`);
   if (!headerRight.empty()) headerRight.text(`Model SSP1.26 — ${year}`);
 
-  drawBarChart(left,  dataA, colorA);
-  drawBarChart(right, dataB, colorB);
+  drawBarChart(left,  dataA, colorA, year);
+  drawBarChart(right, dataB, colorB, year);
 }
 
 // resizing
@@ -96,7 +104,7 @@ slider.on('input', e => {
 });
 
 // each chart template
-function drawBarChart(container, data, color) {
+function drawBarChart(container, data, color, year) {
   container.selectAll('*').remove();
 
   const node = container.node();
@@ -160,8 +168,26 @@ function drawBarChart(container, data, color) {
     .attr('width', x.bandwidth())
     .attr('height', d => innerH - y(d.value))
     .attr('fill', color)
-    .append('title')
-    .text(d => `${d.month.toUpperCase()}: ${d.value.toFixed(2)}`);
+    // .append('title')
+    // .text(d => `${d.month.toUpperCase()}: ${d.value.toFixed(2)}`);
+    .on('mouseenter', function(event, d) {
+      d3.select(this).attr('opacity', 0.85);
+      tooltip
+        .style('opacity', 1)
+        .html(`
+          <div class="tt-month">${d.month.toUpperCase()} — ${year}</div>
+          <div class="tt-value">${d.value.toFixed(2)} mm/day</div>
+        `);
+    })
+    .on('mousemove', function(event) {
+      tooltip
+        .style('left', event.pageX + 6 + 'px')
+        .style('top', (event.pageY -90) + 'px');
+    })
+    .on('mouseleave', function() {
+      d3.select(this).attr('opacity', 1);
+      tooltip.style('opacity', 0);
+    });
 
   // x label
   svg.append('text')
