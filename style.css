@@ -3,9 +3,9 @@
   --panel: #f4f4f4;
   --text: #1d1f37;
   --muted: #6e7387;
-  --accent: #7c9cff;
-  --accent-2: #b58bff;
-  --ring: rgba(124, 156, 255, 0.35);
+  /* --accent: #7c9cff; */
+  /* --accent-2: #b58bff; */
+  /* --ring: rgba(124, 156, 255, 0.35); */
   --radius: 16px;
   --shadow: 0 10px 25px rgba(177, 177, 177, 0.35);
   --gap: 1.25rem;
