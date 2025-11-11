@@ -1,62 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project 3</title>
     <script src="global.js" type="module"></script>
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="eyebrow">DSC 106 Project 3</div>
-      <h1>Title</h1>
-      <div class="subtitle">Subtitle</div>
-    </header>
-
-    <section class="meta">
-      <div class="team">
-        <span class="pill">Janice Rincon</span>
-        <span class="pill">Susana Haing</span>
-        <span class="pill">Michael Kroyan</span>
-        <span class="pill">Bryan Nguyen</span>
-      </div>
-      <div class="controls">
-        <span class="label">Year</span>
-        <input id="slider" type="range" min="0" max="100" value="60" />
-        <span id="sliderValue">60</span>
-      </div>
-    </section>
-
-    <section class="panels">
-      <article class="panel">
-        <div id="headerLeft" class="panel-header">Model SSP2.45</div>
-        <div class="panel-subtitle">This scenario assumes that carbon emissions will stay near current levels. Emissions are projected to increase until 2050 and gradually begin to decline.</div>
-        <div class="panel-body">
-          <div id="chartLeft" class="chart"></div>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="eyebrow">DSC 106 Project 3</div>
+        <h1>When It Rains, It Pours: California’s Changing Rainfall</h1>
+        <div class="subtitle">
+          Exploring how zero and aggressive carbon emission mitigation climate
+          scenarios shape California’s future precipitation patterns
         </div>
-      </article>
-      <article class="panel">
-        <div id="headerRight" class="panel-header">Model SSP.126</div>
-         <div class="panel-subtitle">This scenario models aggressive mitigation of carbon emissions, keeping climate change in check and allowing for stabilization of the climate.</div>
-        <div class="panel-body">
-          <div id="chartRight" class="chart"></div>
+      </header>
+
+      <section class="meta">
+        <div class="team">
+          <span class="pill">Janice Rincon</span>
+          <span class="pill">Susana Haing</span>
+          <span class="pill">Michael Kroyan</span>
+          <span class="pill">Bryan Nguyen</span>
         </div>
-      </article>
-    </section>
-    <writeup>
-        <h4>Some text here</h4>
-        <p> Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. 
-            Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. 
-            Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. 
+        <div class="controls">
+          <span class="label">Year</span>
+          <input id="slider" type="range" min="0" max="100" value="60" />
+          <span id="sliderValue">60</span>
+        </div>
+      </section>
+
+      <section class="panels">
+        <article class="panel">
+          <div class="panel-header">Model SSP2.45, Do nothing</div>
+          <div class="panel-body">
+            <div id="chartLeft" class="chart"></div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="panel-header">Model SSP.126, Aggressively Mitigate</div>
+          <div class="panel-body">
+            <div id="chartRight" class="chart"></div>
+          </div>
+        </article>
+      </section>
+      <writeup>
+        <h3><strong>Write Up</strong></h3>
+        <p>
+          Our visualization displays the
+          <strong>Average Monthly Precipitation in California (mm/day)</strong>
+          from two different CMIP6 climate models:
+          <strong>SSP2.45 (zero mitigation)</strong> and
+          <strong>SSP1.26 (aggressive mitigation)</strong>. We chose a bar plot
+          to clearly convey quantitative comparisons across months.
         </p>
-        <p> Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. 
-            Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. 
-            Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+        <p>
+          To enable straightforward comparison between the two models, we split
+          them into two separate bar graphs, arranged side-by-side. This avoids
+          visual clutter issues that one bar graph would have, whilst making it
+          easier to compare seasonal precipitation patterns within each model.
+          Additionally, we chose to use blue and orange to render SSP2.45 and
+          SSP1.26 respectively to create a clear visual contract while also
+          reflecting their underlying meaning. The blue in the zero-mitigation
+          scenario symbolizes the current state of conditions, while the orange
+          in the aggressive-mitigation scenario conveys urgency and intensity.
+          This color pairing also accommodates colorblind viewers, ensuring
+          clear distinction between the two models.Additional context for each
+          of the models are provided to the user in the subtitle, outlining
+          whether it is for zero mitigation or aggressive mitigation
+          respectively.
         </p>
-    </writeup>
-    <footer><a href="https://github.com/rinconjm/dsc-106-interactive-viz">Github Repo</a></footer>
-  </div>
-</body>
+        <p>
+          Initially, we considered using a choropleth or geospatial map of
+          California to visualize changes in precipitation spatially. However,
+          we determined that a bar graph was a better choice for this dataset
+          because our focus was on quantitative trends rather than spatial
+          variation. The bar charts also allowed us to represent numeric detail
+          (e.g., exact mm/day) more precisely and in a more accessible format.
+        </p>
+        <div>
+          <h4><strong>Overview of the Development Process</strong></h4>
+          <p>The work was split as such:</p>
+          <ul>
+            <li>
+              Janice: Website Layout, Chart Plotting, Exploratory Data Analysis
+            </li>
+            <li>
+              Susana: Data Processing and Structuring, Exploratory Data Analysis
+            </li>
+            <li>Bryan: Tooltip and Hover Feature, Exploratory Data Analysis</li>
+            <li>Michael: Slider Bar Interaction</li>
+          </ul>
+          <p>
+            All team members participated initial brainstorming, feature
+            debugging, and finalization of the project.
+          </p>
+        </div>
+        <div>
+          <p>
+            In total, we spent about 25 hours total (including meetings) to
+            produce the current project and implement full functionality. Each
+            feature/step took approximately:
+          </p>
+          <ul>
+            <li>Exploratory Data Analysis: 10 hours</li>
+            <li>Data Processing and Formatting: 3 hours</li>
+            <li>Website Layout: 2 hours</li>
+            <li>Chart Plotting: 3 hours</li>
+            <li>Tooltip and Hover: 2 hours</li>
+            <li>Slider Bar Interaction: 3 hours</li>
+          </ul>
+        </div>
+        <p>
+          The aspect that took the most time was exploratory data analysis. Due
+          to the complexity of the CMIP6 dataset, we struggled with navigating
+          the dataset to get to information that we were interested in
+          (precipitation, month, year, and model). Once the data was cleaned and
+          structured properly, implementing the visualization and interactions
+          proceeded smoothly.
+        </p>
+      </writeup>
+      <footer>
+        <a href="https://github.com/rinconjm/dsc-106-interactive-viz"
+          >Github Repo</a
+        >
+      </footer>
+    </div>
+  </body>
 </html>
