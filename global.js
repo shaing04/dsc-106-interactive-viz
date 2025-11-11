@@ -116,7 +116,7 @@ function drawBarChart(container, data, color, year) {
   const innerH = height - margin.top  - margin.bottom;
 
   const g = svg.append('g')
-    .attr('transform', `translate(${margin.left},${margin.top})`);
+    .attr('transform', `translate(${Number(margin.left)},${Number(margin.top)})`);
 
   // x scale
   const x = d3.scaleBand()
@@ -133,7 +133,7 @@ function drawBarChart(container, data, color, year) {
   // gridlines
   const grid = g.append('g')
     .attr('class', 'gridlines')
-    .attr('transform', `translate(${margin}, 0)`)
+    .attr('transform', `translate(0, 0)`)
     .call(d3.axisLeft(y).tickFormat('').tickSize(-innerW).ticks(5));
   
     grid.select('.domain').remove();
@@ -141,7 +141,7 @@ function drawBarChart(container, data, color, year) {
   // axes
   const axisColor = '#1d1f37';
   g.append('g')
-    .attr('transform', `translate(0, ${innerH})`)
+    .attr('transform', `translate(0, ${Number(innerH)})`)
     .call(d3.axisBottom(x))
     .selectAll('text')
     .attr('fill', axisColor)
