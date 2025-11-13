@@ -68,7 +68,7 @@ const yearsByModel = d3.rollup(
 // slider across year range
 slider
   .attr('min', 0)
-  .attr('max', years.length - 1)
+  .attr('max', years.length - 6)
   .attr('step', 10)
   .attr('value', 0); // this is the start year
 
